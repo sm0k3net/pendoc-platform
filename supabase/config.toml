@@ -1,0 +1,73 @@
+project_id = "pendoc-platform"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+major_version = 15
+
+[db.seed]
+enabled = false
+
+[studio]
+enabled = true
+
+[auth]
+enabled = true
+site_url = "http://localhost:5173"
+additional_redirect_urls = ["http://localhost:5173/auth?type=client", "http://localhost:5173/auth"]
+jwt_expiry = 3600
+
+[auth.email]
+enable_signup = true
+enable_confirmations = true
+
+[storage]
+enabled = true
+
+[functions.api]
+verify_jwt = false
+
+[functions.ai-assistant]
+verify_jwt = false
+
+[functions.client-auth]
+verify_jwt = false
+
+[functions.export-project]
+verify_jwt = false
+
+[functions.generate-report]
+verify_jwt = false
+
+[functions.process-nmap]
+verify_jwt = false
+
+[functions.process-acunetix]
+verify_jwt = false
+
+[functions.process-nessus]
+verify_jwt = false
+
+[functions.process-burpsuite]
+verify_jwt = false
+
+[functions.send-email]
+verify_jwt = false
+
+[functions.generate-attack-vector]
+verify_jwt = false
+
+[functions.check-duplicate-vulnerability]
+verify_jwt = false
+
+[functions.generate-remediation-strategy]
+verify_jwt = false
+
+[functions.ai-report-analysis]
+verify_jwt = false
