@@ -1,0 +1,361 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 160 84% 39%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 215 20% 95%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 215 20% 94%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 187 92% 41%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 20% 88%;
+    --input: 215 20% 88%;
+    --ring: 160 84% 39%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 215 25% 97%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 160 84% 39%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 20% 92%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 215 20% 88%;
+    --sidebar-ring: 160 84% 39%;
+
+    /* Custom tokens */
+    --cyber-glow: 160 84% 39%;
+    --terminal-green: 142 76% 45%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+  }
+
+  .dark {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 96%;
+
+    --card: 223 47% 8%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 223 47% 8%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 160 84% 45%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 217 33% 14%;
+    --secondary-foreground: 210 40% 96%;
+
+    --muted: 217 33% 14%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 187 92% 50%;
+    --accent-foreground: 222 47% 6%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 210 40% 96%;
+
+    --border: 217 33% 18%;
+    --input: 217 33% 18%;
+    --ring: 160 84% 45%;
+
+    --sidebar-background: 223 47% 7%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 160 84% 45%;
+    --sidebar-primary-foreground: 222 47% 6%;
+    --sidebar-accent: 217 33% 12%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 217 33% 16%;
+    --sidebar-ring: 160 84% 45%;
+
+    --cyber-glow: 160 84% 45%;
+    --terminal-green: 142 76% 55%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 47% 6%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-secondary/50;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+}
+
+@layer utilities {
+  .cyber-glow {
+    box-shadow: 0 0 20px hsl(var(--cyber-glow) / 0.3),
+                0 0 40px hsl(var(--cyber-glow) / 0.1);
+  }
+
+  .cyber-glow-text {
+    text-shadow: 0 0 10px hsl(var(--cyber-glow) / 0.5),
+                 0 0 20px hsl(var(--cyber-glow) / 0.3);
+  }
+
+  .gradient-cyber {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 2px 4px hsl(var(--primary) / 0.3));
+  }
+
+  .gradient-dark {
+    background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(223 47% 4%) 100%);
+  }
+
+  .terminal-text {
+    @apply font-mono text-terminal;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 10px hsl(var(--cyber-glow) / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 25px hsl(var(--cyber-glow) / 0.5);
+    }
+  }
+
+  .animate-scan-line {
+    animation: scan-line 3s linear infinite;
+  }
+
+  @keyframes scan-line {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100%);
+    }
+  }
+
+  .animate-gradient-shift {
+    background-size: 200% 200%;
+    animation: gradient-shift 6s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
+
+/* TipTap Editor Styles */
+.ProseMirror {
+  @apply outline-none min-h-[200px];
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  @apply text-muted-foreground pointer-events-none float-left h-0;
+  content: attr(data-placeholder);
+}
+
+.ProseMirror h1 {
+  @apply text-2xl font-bold mb-4 text-foreground;
+}
+
+.ProseMirror h2 {
+  @apply text-xl font-semibold mb-3 text-foreground;
+}
+
+.ProseMirror h3 {
+  @apply text-lg font-semibold mb-2 text-foreground;
+}
+
+.ProseMirror h4 {
+  @apply text-base font-semibold mb-2 text-foreground;
+}
+
+.ProseMirror p {
+  @apply mb-3 text-foreground;
+}
+
+.ProseMirror ul {
+  @apply list-disc pl-6 mb-3;
+}
+
+.ProseMirror ol {
+  @apply list-decimal pl-6 mb-3;
+}
+
+.ProseMirror li {
+  @apply mb-1;
+}
+
+.ProseMirror blockquote {
+  @apply border-l-4 border-primary pl-4 italic my-4 text-muted-foreground;
+}
+
+.ProseMirror pre {
+  @apply bg-card border border-border rounded-lg p-4 my-4 overflow-x-auto font-mono text-sm;
+}
+
+.ProseMirror code {
+  @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono text-primary;
+}
+
+.ProseMirror pre code {
+  @apply bg-transparent p-0 text-foreground;
+}
+
+.ProseMirror hr {
+  @apply my-6 border-border;
+}
+
+.ProseMirror a {
+  @apply text-primary underline hover:text-primary/80;
+}
+
+.ProseMirror img {
+  @apply max-w-full h-auto rounded-lg my-4;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prose overflow fixes for vulnerability details */
+.prose {
+  @apply overflow-x-hidden break-words;
+}
+
+.prose img {
+  @apply max-w-full h-auto;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.prose pre {
+  @apply overflow-x-auto;
+  max-width: 100%;
+}
+
+.prose table {
+  @apply table-fixed;
+  max-width: 100%;
+}
+
+.prose td,
+.prose th {
+  @apply break-words;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Table styles */
+.ProseMirror table {
+  @apply border-collapse w-full my-4 text-sm;
+}
+
+.ProseMirror th,
+.ProseMirror td {
+  @apply border border-border px-3 py-2 text-left align-top;
+}
+
+.ProseMirror th {
+  @apply bg-muted font-semibold;
+}
+
+.ProseMirror tr:nth-child(even) td {
+  @apply bg-muted/30;
+}
+
+.ProseMirror .selectedCell {
+  @apply bg-primary/20;
+}
+
+/* Selection styles */
+.ProseMirror ::selection {
+  @apply bg-primary/30;
+}
+
+/* Section/Column layout styles */
+.ProseMirror .section {
+  @apply grid gap-4 my-4 p-4 border border-dashed border-border rounded-lg bg-muted/20;
+}
+
+.ProseMirror .section[data-columns="1"] {
+  @apply grid-cols-1;
+}
+
+.ProseMirror .section[data-columns="2"] {
+  @apply grid-cols-2;
+}
+
+.ProseMirror .section[data-columns="3"] {
+  @apply grid-cols-3;
+}
+
+.ProseMirror .section-column {
+  @apply p-3 border border-border rounded bg-background min-h-[100px];
+}
+
+.ProseMirror .section-column:empty::before {
+  content: "Type here...";
+  @apply text-muted-foreground text-sm;
+}
